@@ -16,11 +16,44 @@
 package yaml_test
 
 import (
+	_ "embed"
 	. "gopkg.in/check.v1"
 	"testing"
 )
 
-func Test(t *testing.T) { TestingT(t) }
+func Test(t *testing.T) {
+	TestingT(t)
+}
+
+//go:embed a.yaml
+var yml string
+
+type Yml struct {
+	Input  string `yaml:"input"`
+	Output string `yaml:"output"`
+	Other  string `yaml:"other"`
+}
+
+//func (s S) TestFoo(c *C) {
+//	//var m1 = make(map[string]string)
+//	//var m2 = make(map[string]string)
+//	var m1 Yml
+//	var m2 Yml
+//	var m3 Yml
+//	err := yaml.Unmarshal(([]byte)(yml), &m1)
+//	out1, err := yaml.Marshal(m1)
+//	err = yaml.Unmarshal(out1, &m2)
+//	out2, err := yaml.Marshal(m2)
+//	err = yaml.Unmarshal(out2, &m3)
+//	out3, err := yaml.Marshal(m3)
+//	os.WriteFile("a1.yaml", out1, 0644)
+//	os.WriteFile("a2.yaml", out2, 0644)
+//	os.WriteFile("a3.yaml", out3, 0644)
+//	fmt.Println(err)
+//	fmt.Println(string(out1))
+//	fmt.Println(string(out2))
+//	fmt.Println(string(out3))
+//}
 
 type S struct{}
 
